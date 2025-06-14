@@ -1,0 +1,162 @@
+:root {
+  /* Dimensions*/
+  --header-padding: 8px;
+  --h1-size: 1.5rem;
+  --header-text: 1rem;
+  --header-height: calc(var(--h1-size) + var(--header-text) + 2 * var(--header-padding) + 1em);
+  
+  --gutter-gap: 64px;
+  --button-row-height: 48px;
+
+  --footer-height: 1.8em;
+
+  /* Colors */
+  --header-bg-color: #0a0a23; 
+  --device-color: #333;
+  --shadow-color: #0000005a;
+  --highlighted-edge: #ffffff5a;
+
+  --board-size: 16;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  
+
+  background-image: url("./svg/woodgrain_tileablev2.svg");
+  backdrop-filter: blur(1.2px);
+}
+
+header {
+  box-sizing: border-box;
+  padding: var(--header-padding) 0;
+  height: var(--header-height);
+  text-align: center;
+  /*position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);*/
+  background-color: var(--header-bg-color);
+  color: white;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid white;
+}
+
+main{
+  height: calc(100% - var(--header-height) - var(--footer-height));
+  width: 100%;
+}
+
+h1 {
+  font-size: var(--h1-size);
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--footer-height);
+  text-align: center;
+  
+  background-color: var(--header-bg-color);
+  color: white;
+}
+
+.main-container {
+  box-sizing: content-box;
+  background-color: var(--device-color);
+  position:relative;
+  height: calc(100% -  var(--gutter-gap));
+  aspect-ratio: 1 / 1;
+  max-width: 800px;
+  max-height: 800px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*
+  border-bottom: 8px solid var(--shadow-color);
+  border-right: 8px solid var(--shadow-color);
+  border-left: 8px solid var(--highlighted-edge);
+  border-top: 8px solid var(--highlighted-edge);
+  */
+  border-radius: 20px;
+  box-shadow:
+    inset -8px -8px 4px 4px var(--shadow-color),
+    inset 2px 2px 4px 4px var(--highlighted-edge),
+     6px 4px 12px 8px var(--shadow-color);
+  /*box-shadow: 6px 4px 2px var(--shadow-color);*/
+  color: white;
+  text-shadow: 1px 2px black;
+}
+
+
+.button-row {
+  height: var(--button-row-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+}
+
+
+#grid-size-input {
+  width: 48px;
+}
+
+#tile-board-container {
+  box-sizing: border-box;
+  border: 1px solid blue;
+  background-color: black;;
+  height: calc(100% - var(--button-row-height) - var(--button-row-height) / 2);
+  aspect-ratio: 1 / 1;
+  margin: auto;
+}
+
+.flex-container {
+  display: flex;
+  height: calc(100% / var(--board-size));
+}
+
+.test-tile {
+  box-sizing: border-box;
+  border: 1px solid blue;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  /*min-width: 20px;
+  max-width: 42px;
+  min-height: 20px;
+  max-height: 42px;*/
+  /*background-color: green;*/
+  font-size: 12px;
+}
+
+
+ @media screen and (orientation:portrait) {
+  /* Board size for device in portrait mode */
+  .main-container {
+    width: calc(100% - var(--gutter-gap));
+    height: revert;
+  }
+ }
