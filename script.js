@@ -1,9 +1,10 @@
+const gridButton = document.querySelector("#grid-button");
+const clearButton = document.querySelector("#clear-button");
 const tileBoardContainer = document.querySelector("#tile-board-container");
 
 let gridSize = 16;
 
 const createTileBoard = (size) => {
-  console.log(typeof +size);
   try {
 
     for (let y = 0; y < +size; y++) {
@@ -25,7 +26,9 @@ const createTileBoard = (size) => {
 };
 
 const removeBoard = () => {
-  tileBoardContainer.innerHTML = "";
+  while(tileBoardContainer.firstChild) {
+    tileBoardContainer.removeChild(tileBoardContainer.firstChild);
+  }
 }
 
 const changeBoardSize = (size) => {
@@ -34,3 +37,14 @@ const changeBoardSize = (size) => {
 }
 
 createTileBoard(gridSize);
+
+gridButton.addEventListener("click", () => {
+  do {
+    let inputValue = window.prompt("Input the new grid size (1-100)", 16);
+    if (inputValue === null) {
+      return;
+    }
+    gridSize = +inputValue;
+  } while (isNaN(gridSize) || gridSize < 1 || gridSize > 100);
+  changeBoardSize(gridSize);
+});
