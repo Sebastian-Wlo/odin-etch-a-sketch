@@ -21,11 +21,10 @@ const createTileBoard = (size) => {
         const tile = document.createElement("div");
         tile.classList.add("color-tile");
         tile.addEventListener("mouseover", (e) => tileInteraction(e.target));
-        tile.style.setProperty("filter", "brightness(100%)");
         tileContainer.appendChild(tile);
-        
       }
     }
+    clearBoard();
   } catch (e) {
     console.error(e);
   }
@@ -42,6 +41,14 @@ const changeBoardSize = (size) => {
   createTileBoard(size);
 }
 
+const clearBoard = () => {
+  const tileNodeList = document.querySelectorAll(".color-tile");
+  let tileElementList = Array.from(tileNodeList);
+  for (let tile of tileElementList) {
+    tile.style.setProperty("filter", "brightness(100%)");
+  }
+};
+
 createTileBoard(gridSize);
 
 const tileInteraction = (target) => {
@@ -51,6 +58,10 @@ const tileInteraction = (target) => {
     target.style.setProperty("filter", `brightness(${+currBrightness - 10}%)`);
   }
 }
+
+clearButton.addEventListener("click", () => {
+  clearBoard();
+})
 
 gridButton.addEventListener("click", () => {
   do {
