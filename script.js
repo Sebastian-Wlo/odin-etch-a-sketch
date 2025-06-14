@@ -18,6 +18,12 @@ const createTileBoard = (size) => {
         //tileContainer.innerText = `${x},${y}`;
         tileContainer.classList.add("test-tile");
         tileRow.appendChild(tileContainer);
+        const tile = document.createElement("div");
+        tile.classList.add("color-tile");
+        tile.addEventListener("mouseover", (e) => tileInteraction(e.target));
+        tile.style.setProperty("filter", "brightness(100%)");
+        tileContainer.appendChild(tile);
+        
       }
     }
   } catch (e) {
@@ -37,6 +43,14 @@ const changeBoardSize = (size) => {
 }
 
 createTileBoard(gridSize);
+
+const tileInteraction = (target) => {
+  const regex = /\d*%/;
+  const currBrightness = target.style.filter.match(regex)[0].replace("%", "");
+  if (+currBrightness >= 0) {
+    target.style.setProperty("filter", `brightness(${+currBrightness - 10}%)`);
+  }
+}
 
 gridButton.addEventListener("click", () => {
   do {
