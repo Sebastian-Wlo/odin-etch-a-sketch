@@ -38,6 +38,8 @@ body {
   background-image: url("./svg/woodgrain_tileablev2.svg");
   --webkit-backdrop-filter: blur(1.2px) /* Fallback for Safari */
   backdrop-filter: blur(1.2px);
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
 }
 
 header {
@@ -110,7 +112,7 @@ footer {
 button {
   font-weight: 600;
   text-shadow: 2px 2px rgb(6, 19, 26);
-  padding: 4px 8px;
+  padding: 6px 12px;
   transform: translateY(1px);
   background-color: rgb(10, 80, 112);
   border: 0;
@@ -118,6 +120,8 @@ button {
   border-radius: 45%;
   color: white;
   transition: .1s;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
 }
 
 button:hover {

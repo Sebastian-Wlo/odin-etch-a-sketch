@@ -7,7 +7,20 @@
   <link rel="stylesheet" href="styles.css">
 
   <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  >
+  <link rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin
+>
+<link
+  href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+  rel="stylesheet"
+>
 </head>
 <body>
   <header>
@@ -20,24 +33,13 @@
   <main>
     <div class="main-container">
       <div class="button-row">
-        <label for="grid-size-input">Grid Size: 
-          <input
-            id="grid-size-input"
-            type="number"
-            min="1"
-            max="256"
-            step="1"
-            value="16"
-            size="3"
-          >
-        </label>
-        <button id="apply-button" type="button">Apply</button>
+        <button id="grid-button" type="button">Change Grid Size</button>
         <button id="clear-button" type="button">Clear</button>
       </div>
       <div id="tile-board-container"></div>
     </div>
   </main>
-  <footer> <!--Sebastian Włodarczyk, -->2025</footer>
+  <footer> Sebastian Włodarczyk, 2025</footer>
   <script src="script.js"></script>
 </body>
 </html>
