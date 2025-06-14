@@ -21,6 +21,7 @@ const createTileBoard = (size) => {
         const tile = document.createElement("div");
         tile.classList.add("color-tile");
         tile.addEventListener("mouseover", (e) => tileInteraction(e.target));
+        tile.addEventListener("click", (e) => tileInteraction(e.target));
         tileContainer.appendChild(tile);
       }
     }
@@ -46,6 +47,7 @@ const clearBoard = () => {
   let tileElementList = Array.from(tileNodeList);
   for (let tile of tileElementList) {
     tile.style.setProperty("filter", "brightness(100%)");
+    tile.style.removeProperty("background-color")
   }
 };
 
@@ -53,10 +55,18 @@ createTileBoard(gridSize);
 
 const tileInteraction = (target) => {
   const regex = /\d*%/;
-  const currBrightness = target.style.filter.match(regex)[0].replace("%", "");
-  if (+currBrightness >= 0) {
-    target.style.setProperty("filter", `brightness(${+currBrightness - 10}%)`);
+  const currBrightness = +(target.style.filter.match(regex)[0].replace("%", ""));
+  if (currBrightness === 100) {
+    setRandomBGColor(target);
   }
+  if (currBrightness >= 0) {
+    target.style.setProperty("filter", `brightness(${currBrightness - 10}%)`);
+  }
+}
+
+const setRandomBGColor = (element) => {
+  const hslVal = Math.floor(Math.random() * 360);
+  element.style.setProperty("background-color", `hsl(${hslVal} 100% 50%)`);
 }
 
 clearButton.addEventListener("click", () => {
